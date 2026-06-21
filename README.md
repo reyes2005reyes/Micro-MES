@@ -29,9 +29,15 @@ Stack: FastAPI + React + PostgreSQL
 3. Instala las dependencias con el comado: py -m pip install fastapi uvicorn psycopg2-binary pyjwt passlib[bcrypt] python-dotenv
    O directamente desde el archivo de requisitos:
    py -m pip install -r requirements.txt
-4. Configura el archivo `.env` dentro de `backend` con tus datos de conexion:
+4. Configura el archivo `.env` dentro de `backend` con tus datos de conexion. Ejemplo:
+   DB_HOST=localhost
+   DB_PORT=5432
+   DB_NAME=micro-mes
+   DB_USER=postgres
+   DB_PASSWORD=tu_contraseña
+   JWT_SECRET=una_clave_secreta_larga
 5. Corre el servidor:
-   uvicorn main:app --reload --port 8000
+   py -m uvicorn main:app --reload --port 8000
 6. Verifica que funciona abriendo: http://localhost:8000/docs
 
 

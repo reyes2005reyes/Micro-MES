@@ -20,7 +20,7 @@ function Login(){
             const response = await api.post("/auth/login", {email, password});
             localStorage.setItem("token", response.data.token);
             localStorage.setItem("nombre", response.data.nombre);
-            navigate("/deshboard"); 
+            navigate("/dashboard"); 
         } catch (error) {
             setError("Credenciales incorrectas");
         }

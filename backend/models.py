@@ -17,7 +17,7 @@ class SupervisorLogin(BaseModel):
 class LineaCreate(BaseModel):
     nombre_linea: str
     capacidad_teorica: float
-    tiempo_planeacion: float
+    tiempo_planificado: float
     tiempo_paradas: float = 0
     unidades_producidas: int = 0
     unidades_defectuosas: int = 0

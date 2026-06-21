@@ -32,7 +32,7 @@ def create_token(data: dict) -> str:
     #Agrega la fecha de expiracion al token
     payload["exp"] = datetime.utcnow() + timedelta(hours=8)
     #Genera el token firmado con la clave secreta
-    token = jwt.encode(payload, os.getenv("JWT_SECRET"), algorithm=["HS256"])
+    token = jwt.encode(payload, os.getenv("JWT_SECRET"), algorithm="HS256")
     return token
 
 def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)):
@@ -41,7 +41,7 @@ def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(securit
         #Obtiene el token enviado por el cliente
         token = credentials.credentials
         #valida el token
-        payload = jwt.decode(token, os.getenv("JWT_SECRET"), algorithms=["HS252"])
+        payload = jwt.decode(token, os.getenv("JWT_SECRET"), algorithms=["HS256"])
         return payload
     except jwt.ExpiredSignatureError:
         raise HTTPException(
