@@ -24,3 +24,13 @@ CREATE TABLE IF NOT EXISTS lineas_produccion (
     usuario_creador UUID NOT NULL REFERENCES supervisores(id),
     fecha_creacion TIMESTAMP DEFAULT NOW()
 );
+
+-- Usuario de prueba para evaluacion
+-- Email: evaluador@sincron.com
+-- Password: Sincron2026
+-- ============================================
+INSERT INTO supervisores (nombre, email, password_hash)
+SELECT 'Supervisor de Prueba', 'evaluador@sincron.com', '$2b$12$PCzJMijbI2WvJnfulM5BleLYyAz/iZp77OTFBfR82z7wtJlBnNKQO'
+WHERE NOT EXISTS (
+    SELECT 1 FROM supervisores WHERE email = 'evaluador@sincron.com'
+);
